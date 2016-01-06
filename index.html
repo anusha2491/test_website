@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shopping collection</title>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<script>
+	$(function() {
+		$("#table1").show();
+		$("#table2").hide();
+		$("#table3").hide();
+		$("#table4").hide();
+		$("#tabs")
+				.tabs(
+						{
+							beforeLoad : function(event, ui) {
+								ui.jqXHR
+										.fail(function() {
+											ui.panel
+													.html("Couldn't load this tab. We'll try to fix this as soon as possible. "
+															+ "If this wouldn't be a demo.");
+										});
+							}
+						});
+
+		$("#go1").click(function() {
+			$("#table1").show();
+			$("#table2").hide();
+			$("#table3").hide();
+			$("#table4").hide();
+		});
+		$("#go2").click(function() {
+			$("#table1").hide();
+			$("#table2").show();
+			$("#table3").hide();
+			$("#table4").hide();
+		});
+		$("#go3").click(function() {
+			$("#table1").hide();
+			$("#table2").hide();
+			$("#table3").show();
+			$("#table4").hide();
+		});
+		$("#go4").click(function() {
+			$("#table1").hide();
+			$("#table2").hide();
+			$("#table3").hide();
+			$("#table4").show();
+		});
+
+		$("#backtop").click(function() {
+			($("div").scrollTop() + " px");
+		});
+
+	});
+</script>
+<style>
+
+/*! jQuery UI - v1.11.4 - 2015-03-11
+* http://jqueryui.com
+* Includes: core.css, accordion.css, autocomplete.css, button.css, datepicker.css, dialog.css, draggable.css, menu.css, progressbar.css, resizable.css, selectable.css, selectmenu.css, slider.css, sortable.css, spinner.css, tabs.css, tooltip.css, theme.css
+* To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Verdana%2CArial%2Csans-serif&fwDefault=normal&fsDefault=1.1em&cornerRadius=4px&bgColorHeader=cccccc&bgTextureHeader=highlight_soft&bgImgOpacityHeader=75&borderColorHeader=aaaaaa&fcHeader=222222&iconColorHeader=222222&bgColorContent=ffffff&bgTextureContent=flat&bgImgOpacityContent=75&borderColorContent=aaaaaa&fcContent=222222&iconColorContent=222222&bgColorDefault=e6e6e6&bgTextureDefault=glass&bgImgOpacityDefault=75&borderColorDefault=d3d3d3&fcDefault=555555&iconColorDefault=888888&bgColorHover=dadada&bgTextureHover=glass&bgImgOpacityHover=75&borderColorHover=999999&fcHover=212121&iconColorHover=454545&bgColorActive=ffffff&bgTextureActive=glass&bgImgOpacityActive=65&borderColorActive=aaaaaa&fcActive=212121&iconColorActive=454545&bgColorHighlight=fbf9ee&bgTextureHighlight=glass&bgImgOpacityHighlight=55&borderColorHighlight=fcefa1&fcHighlight=363636&iconColorHighlight=2e83ff&bgColorError=fef1ec&bgTextureError=glass&bgImgOpacityError=95&borderColorError=cd0a0a&fcError=cd0a0a&iconColorError=cd0a0a&bgColorOverlay=aaaaaa&bgTextureOverlay=flat&bgImgOpacityOverlay=0&opacityOverlay=30&bgColorShadow=aaaaaa&bgTextureShadow=flat&bgImgOpacityShadow=0&opacityShadow=30&thicknessShadow=8px&offsetTopShadow=-8px&offsetLeftShadow=-8px&cornerRadiusShadow=8px
+* Copyright 2015 jQuery Foundation and other contributors; Licensed MIT */
+
+/* Layout helpers
+----------------------------------*/
+.ui-helper-hidden {
+	display: none;
+}
+
+.ui-helper-hidden-accessible {
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+.ui-helper-reset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	line-height: 1.3;
+	text-decoration: none;
+	font-size: 100%;
+	list-style: none;
+}
+
+.ui-helper-clearfix:before,.ui-helper-clearfix:after {
+	content: "";
+	display: table;
+	border-collapse: collapse;
+}
+
+.ui-helper-clearfix:after {
+	clear: both;
+}
+
+.ui-helper-clearfix {
+	min-height: 0; /* support: IE7 */
+}
+
+.ui-helper-zfix {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+	opacity: 0;
+	filter: Alpha(Opacity = 0); /* support: IE8 */
+}
+
+.ui-front {
+	z-index: 100;
+}
+
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-disabled {
+	cursor: default !important;
+}
+
+
+
+
+/* TR overrides */
+.ui-spinner .ui-icon-triangle-1-s {
+	/* need to fix icons sprite */
+	background-position: -65px -16px;
+}
+
+.ui-tabs {
+	position: relative;
+	/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+	padding: .2em;
+}
+
+.ui-tabs .ui-tabs-nav {
+	padding: .2em .2em 0;
+	width: 600px;
+	margin-left: 310px;
+	float: center;
+}
+
+.ui-tabs .ui-tabs-nav li {
+	list-style: none;
+	float: left;
+	position: relative;
+	top: 0;
+	margin: 1px .2em 0 0;
+	border-bottom-width: 0;
+	padding: 0;
+	white-space: nowrap;
+	/* background-color: white; */
+}
+
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+	float: left;
+	padding: .5em 1em;
+	text-decoration: none;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-active {
+	margin-bottom: -1px;
+	padding-bottom: 1px;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor,.ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor,.ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor
+	{
+	cursor: text;
+}
+
+.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
+	cursor: pointer;
+}
+
+.ui-tabs .ui-tabs-panel {
+	display: block;
+	border-width: 0;
+	padding: 1em 1.4em;
+	background: none;
+}
+
+.ui-tooltip {
+	padding: 8px;
+	position: absolute;
+	z-index: 9999;
+	max-width: 300px;
+	-webkit-box-shadow: 0 0 5px #aaa;
+	box-shadow: 0 0 5px #aaa;
+}
+
+body .ui-tooltip {
+	border-width: 2px;
+
+
+}
+
+.left carousel-control, .right carousel-control{
+    background: none;
+	filter: progid: none;
+    outline: 0;
+}
+
+/* Interaction states
+----------------------------------*/
+.ui-state-default,.ui-widget-content .ui-state-default,.ui-widget-header .ui-state-default
+	{
+	/* background-color: white; */
+	font-weight: normal;
+}
+
+.ui-state-default a,.ui-state-default a:link,.ui-state-default a:visited
+	{
+	color: #555555;
+	text-decoration: none;
+}
+
+.ui-state-hover,.ui-widget-content .ui-state-hover,.ui-widget-header .ui-state-hover,.ui-state-focus,.ui-widget-content .ui-state-focus,.ui-widget-header .ui-state-focus
+	{
+	background-color: white;
+	font-weight: bold;
+}
+
+.ui-state-hover a,.ui-state-hover a:hover,.ui-state-hover a:link,.ui-state-hover a:visited,.ui-state-focus a,.ui-state-focus a:hover,.ui-state-focus a:link,.ui-state-focus a:visited
+	{
+	color: #212121;
+	text-decoration: none;
+}
+
+.ui-state-active,.ui-widget-content .ui-state-active,.ui-widget-header .ui-state-active
+	{
+	background-color: white;
+	font-weight: bold;
+}
+
+.ui-state-active a,.ui-state-active a:link,.ui-state-active a:visited {
+	color: #212121;
+	text-decoration: none;
+}
+
+ui-tabs .ui-tabs-nav {
+	padding: .2em .2em 0;
+	width: 600px;
+	margin-left: 600px;
+	float: center;
+}
+
+.ui-widget-header {
+	/* border: 1px solid #ffffff; */
+	/* background: #ffffff url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") 50% 50% repeat-x; */
+	/* color: #222222; */
+	font-weight: bold;
+}
+
+.ui-widget-content {
+	/* border: 1px solid #ffffff; */
+	background: #ffffff url("images/ui-bg_flat_75_ffffff_40x100.png") 50%
+		50% repeat-x;
+	color: #222222;
+}
+
+.border-right {
+	border-right: 2px solid #ddd;
+}
+
+.table-responsive {
+	min-height: .01%;
+}
+</style>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="jquery-ui.css">
+</head>
+<body>
+<div class="container"> 
+<div class="row" style="width:100%; text-align: center; margin: 0 auto;"> 
+		<a href="">
+<img src="USNEW_SALE_BANNER.jpg" id="landing-header-img">
+</a>
+</div>
+	<div id="tabs" width="600px">
+	
+		<ul>
+			<li class="border-right"><a href="#collection">THE
+					COLLECTION</a></li>
+			<li class="border-right"><a href="#whatsnews">WHAT'S NEW?</a></li>
+			<li class="border-right"><a href="#faq">FAQ</a></li>
+			<li><a href="#awards">AWARDS & PRESS</a></li>
+		</ul>
+		<hr	style="width: 600px; border-bottom: 1px solid #ddd; margin-center: 600px; margin-top: 10px;">
+	
+		<!-- collection -->
+		<div id="collection">
+			<center>
+				<div class="container">
+				
+					<div class="row">
+						<div class="col-xs-12">
+							<table width="600" border="0" cellspacing="0" cellpadding="0"
+									bgcolor="#ffffff"
+									style="borde: none; border-collapse: collapse; line-height: 0px;">
+									<tr>
+										<a href=""> <img src="" border="0" alt=""
+											height="" width="">
+										</a>
+									</tr>
+									<tr>
+										<td>
+											<table>
+												<tr>
+													<td><a href=""> <img src="small_banners_Oct15373.jpg" border="0"
+															alt="" height="280" width="250">
+													</a></td>
+													<td><a href=""> <img src="small_banners_Oct1537_1.jpg" border="0"
+															alt="" height="280" width="250">
+													</a></td>
+													<td><a href=""> <img src="small_banners_Oct152.jpg" border="0"
+															alt="" height="280" width="250">
+													</a></td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<table>
+												<tr>
+													<td><a href=""> <img src="US_NEW_BANNER_7.jpg" border="0"
+															alt="" height="280" width="250">
+													</a></td>
+													<td><a href=""> <img src="US_SALE_Dropdown_BOXINGDAY.jpg" border="0"
+															alt="" height="280" width="250">
+													</a></td>
+													<td><a href=""> <img src="US_NEW_BANNER_7.jpg" border="0"
+															alt="" height="280" width="250">
+													</a></td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<table>
+												<tr>
+													<td><a href=""> <img src="small_banners_Oct15373.jpg" border="0"
+															alt="" height="280" width="250"
+															style="margin-left: 150px">
+													</a></td>
+													<td><a href=""> <img src="small_banners_Oct152.jpg" border="0"
+															alt="" height="280" width="250">
+													</a></td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<table>
+												<tr>
+													<a
+														href="#">
+														<img src="collection.jpg" border="0" alt="collection"
+														height="100" style="margin-left: 200px";width="">
+													</a>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<table>
+												<tr id="backtop">
+													<td><a href="#"> <img src="backtop.jpg"
+															alt="back to top" style="margin-left: 300px" height="100">
+													</a></td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									</table>
+							</div>
+						</div>
+				</div>
+			</center>
+		</div>
+		<!-- what's news -->
+		<div id="whatsnews">
+			<center>
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+							<table width="600" border="0" cellspacing="0" cellpadding="0"
+								bgcolor="#ffffff"
+								style="borde: none; border-collapse: collapse; line-height: 0px;">
+								<tr>
+									<a href=""> <img src="" border="0" alt=""
+										height="" width="">
+									</a>
+								</tr>
+								<div id="myCarousel" class="carousel slide" data-ride="carousel">
+									<div class="carousel-inner" role="listbox">
+										<div class="item active">
+											<img src="US_SALE_Dropdown_BOXINGDAY.jpg" alt="Chania">
+										</div>
+										<div class="item">
+											<img src="US_Newarrivals_Dropdown_2015.12.14.jpg" alt="Chania">
+										</div>
+										<div class="item">
+											<img src="Dropdown_EP_FINAL.jpg" alt="Flower">
+										</div>
+										<div class="item">
+											<img src="small_banners_Oct1537_1.jpg" alt="Flower">
+										</div>
+									</div>
+									<!-- Left and right controls -->
+									<a class="left carousel-control" href="#myCarousel"
+										role="button" data-slide="prev"> <span
+										class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+										<img src="" width="250"> <span
+										class="sr-only">Previous</span>
+									</a> <a class="right carousel-control" href="#myCarousel"
+										role="button" data-slide="next"> <span
+										class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+										<img src="" width="250"> <span
+										class="sr-only">Next</span>
+									</a>
+								</div>	
+								</div>	
+							</table>
+							<br>
+							</br>
+							<div>
+							<hr style="height: 2px; color: gray">
+							<div/>
+							
+							<tr>
+								<td>
+									<table>
+										<tr id="backtop">
+											<td><a href="#"> <img src="backtop.jpg"
+													alt="back to top" height="100">
+											</a></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</div>
+					</div>
+				</div>
+			</center>
+		</div>
+		<!-- FAQ -->
+		<div id="faq">
+			<center>
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+							<table width="600" border="0" cellspacing="0" cellpadding="0"
+									bgcolor="#ffffff"
+									style="borde: none; border-collapse: collapse; line-height: 0px;">
+									<tr>
+										<a href=""> <img src="" border="0" alt=""
+											height="" width="">
+										</a>
+									</tr>
+									<!-- prod -->
+									<tr>
+										<h4 style="text-align: left; margin-left: 200px;">Renewed
+											Hope FAQs</h4>
+										<ul style="width: 800px; font-size: 16px;">
+											<li style="text-align: left;">What are your sizes like?
+
+Please see our SIZE GUIDE. It's also located in the "size guide" tab of each product page for your convenience.
+We are generally quite true to size, but if we had to say, we can be on the small side compared with other retailers. 
+However, if you're still unsure about the sizing of particular items, just email us :) We have girls of all sizes in our office, 
+and they would be happy to try something on for you and let you know the fit.
+The item I want is “sold out” or no longer appears?
+Email us at info@so.com with the name of the item (or description if you can't think of it) and we'll let you know 
+if we're getting anymore back. If we are, we'll put you on the list to be notified when that particular item comes back in stock. 
+Or, on the sold out products page, you should see a grey box that says "Notify me when my size is back in stock". 
+If you pop your email down, then you'll get an automatic notification when your size is back in stock! </li>
+											<li style="text-align: left;">Does this product help
+												improve the appearance of fine lines?</li>
+											<li style="text-align: left;">Your country not on our shipping list?
+Simply email us on info@so.com and we will arrange another form of shipping for you so that Showpo is available to everyone around the world!!</li>
+											<li style="text-align: left;">How do I access my store credit?
+
+If you've been given store credit, it will automatically come up as a payment option at the shopping bag page when you are logged in. 
+											</li>
+											<br>
+											<p style="text-align: left;">The item I want is “sold out” or no longer appears?
+
+Email us at info@showpo.com with the name of the item (or description if you can't think of it) and 
+we'll let you know if we're getting anymore back. If we are, we'll put you on the list to be notified when that particular item comes back in stock. 
+Or, on the sold out products page, you should see a grey box that says "Notify me when my size is back in stock". If you pop your email down, 
+then you'll get an automatic notification when your size is back in stock! </p>
+											
+											
+										</ul>
+									</tr>
+									<tr>
+										<td>
+											<table>
+												<tr id="backtop">
+													<td><a href="#"> <img src="backtop.jpg"
+															alt="back to top" style="margin-left: 150px" height="100">
+													</a></td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+			</center>
+		</div>
+		<!-- awards & press -->
+		<div id="awards">
+			<center>
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+								<table width="600" border="0" cellspacing="0" cellpadding="0"
+									bgcolor="#ffffff"
+									style="borde: none; border-collapse: collapse; line-height: 0px;">
+									<tr>
+										<a href=""> <img src="" border="0" alt=""
+											height="" width="">
+										</a>
+									</tr>
+									<tr>
+										<td>
+											<table>
+												<tr>
+													<td><a href=""> <img src="US_SALE_Dropdown_BOXINGDAY.jpg"
+															class="border-right" border="0" alt="" height="280"
+															width="250">
+													</a></td>
+													<td><a href=""> <img src="US_Newarrivals_Dropdown_2015.12.14.jpg"
+															class="border-right" border="0" alt="" height="280"
+															width="250">
+													</a></td>
+													<td><a href=""> <img src="Dropdown_EP_FINAL.jpg"
+															class="border-right" alt="" height="280" width="250">
+													</a></td>
+													<td><a href=""> <img src="small_banners_Oct1537_1.jpg" alt=""
+															height="280" width="250">
+													</a></td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<table>
+												<tr id="backtop">
+													<td><a href="#"> <img src="backtop.jpg"
+															alt="back to top" style="margin-left: 350px" height="100">
+													</a></td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+				</div>
+			</center>
+		</div>
+	</div>
+
+
+	</div>
+
+
+</body>
+</html>
